@@ -1,2 +1,2 @@
 # HelathTrack
-Health tracking web application developed using HTML, CSS and JavaScript with Agile Scrum methodology.
+Application web de suivi de la santé développée en HTML, CSS et JavaScript selon la méthodologie Agile Scrum.
