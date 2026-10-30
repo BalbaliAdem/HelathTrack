@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthTrack — Connexion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+
+  <!-- Fond -->
+  <div class="bg"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="page-center">
+
+    <!-- Logo -->
+    <a href="login.html" class="logo-header">
+      <div class="logo-icon">🩺</div>
+      <span class="logo-name">HealthTrack</span>
+    </a>
+
+    <!-- Carte -->
+    <div class="card">
+      <h1 class="card-title">Connexion</h1>
+      <p class="card-subtitle">Bienvenue ! Identifiez-vous pour accéder à votre espace.</p>
+
+      <!-- Sélecteur de rôle -->
+      <div class="role-selector">
+        <button class="role-btn active" id="btnPatient">👤 Patient</button>
+        <button class="role-btn"        id="btnMedecin">🩺 Médecin</button>
+      </div>
+
+      <!-- Message d'alerte -->
+      <div class="alert error" id="alertMsg"></div>
+
+      <!-- Formulaire -->
+      <form id="loginForm" novalidate>
+
+        <div class="field" id="f-email">
+          <label for="email">✉️ Email <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="ico">✉️</span>
+            <input type="email" id="email" placeholder="votre@email.com" autocomplete="email"/>
+          </div>
+          <span class="hint">Veuillez entrer un email valide.</span>
+        </div>
+
+        <div class="field" id="f-password">
+          <label for="password">🔒 Mot de passe <span class="req">*</span></label>
+          <div class="input-wrap">
+            <span class="ico">🔒</span>
+            <input type="password" id="password" placeholder="••••••••" autocomplete="current-password"/>
+          </div>
+          <span class="hint">Le mot de passe est requis.</span>
+        </div>
+
+        <!-- Bouton -->
+        <button type="submit" class="btn-primary" id="loginBtn">
+          Se connecter →
+        </button>
+
+      </form>
+
+      <div class="divider">ou</div>
+
+      <!-- Lien inscription -->
+      <div class="nav-link">
+        Pas encore de compte ?
+        <a href="register.html">Créer un compte</a>
+      </div>
+
+      <!-- Comptes de démo -->
+      <div style="margin-top:20px; padding:12px; background:rgba(255,255,255,0.06); border-radius:10px; border:1px solid rgba(255,255,255,0.12);">
+        <p style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">Comptes de démonstration</p>
+        <p style="font-size:12px; color:rgba(255,255,255,0.65); margin-bottom:4px;">👤 patient@healthtrack.com / patient123</p>
+        <p style="font-size:12px; color:rgba(255,255,255,0.65);">🩺 medecin@healthtrack.com / medecin123</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../database.js"></script>
+  <script src="../login.js"></script>
+  <script src="../charts_widget.js"></script>
+
+</body>
+</html>

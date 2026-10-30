@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HealthTrack — Espace Patient</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <div class="bg"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="page-center dashboard-layout">
+
+      <!-- Formulaire à gauche -->
+      <div class="card form-card">
+        <h2 class="card-title">Mon Suivi Santé</h2>
+        <p class="card-subtitle">Ajoutez vos mesures quotidiennes — les graphiques se mettront à jour.</p>
+
+        <form id="healthForm" class="form-grid">
+          <div class="field">
+            <label>Poids (kg)</label>
+            <input type="number" id="weight" step="0.1" required placeholder="Ex: 75.5">
+          </div>
+          <div class="field">
+            <label>Nombre de pas</label>
+            <input type="number" id="steps" required placeholder="Ex: 8000">
+          </div>
+          <div class="field">
+            <label>Pression systolique (mmHg)</label>
+            <input type="number" id="systolic" required placeholder="Ex: 120">
+          </div>
+          <div class="field">
+            <label>Pression diastolique (mmHg)</label>
+            <input type="number" id="diastolic" required placeholder="Ex: 80">
+          </div>
+          <div class="field">
+            <label>Fréquence cardiaque (bpm)</label>
+            <input type="number" id="heartRate" required placeholder="Ex: 70">
+          </div>
+          <div class="field">
+            <label>Heures de sommeil</label>
+            <input type="number" id="sleepHours" step="0.1" required placeholder="Ex: 8.0">
+          </div>
+
+          <button id="submitDataBtn" type="submit" class="btn-primary">Ajouter les données</button>
+        </form>
+        <button id="cancelEditBtn" class="btn-primary ghost" type="button" style="display:none;margin-top:8px;width:100%;">Annuler la modification</button>
+
+        <div style="margin-top:12px; display:flex; gap:10px;">
+          <button id="clearDataBtn" class="btn-primary ghost" type="button">Effacer mes données</button>
+        </div>
+
+        <div id="entriesList" class="entries-list" style="margin-top:16px;">
+          <h3 class="card-subtitle" style="margin-bottom:8px;">Mes relevés récents</h3>
+          <ul id="dataList" class="data-list"></ul>
+        </div>
+        
+        <div id="reminderSettings" class="reminder-card" style="margin-top:18px;">
+          <h3 class="card-subtitle">Rappels</h3>
+          <label style="display:block; margin-top:6px;"><input type="checkbox" id="enableReminders"> Activer les rappels (24h après la dernière saisie)</label>
+          <div id="reminderChannels" style="display:none; margin-top:10px;">
+            <label style="display:block;"><input type="checkbox" id="reminderEmail"> Envoyer un email à mon adresse</label>
+            <label style="display:block;"><input type="checkbox" id="reminderAutoOpen"> Ouvrir automatiquement la fenêtre de composition (si service indisponible)</label>
+            <button id="testReminder" class="btn-primary ghost" type="button" style="margin-top:8px;">Envoyer un test</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau de graphiques à droite -->
+      <div class="charts-panel card">
+        <div class="charts-header">
+          <h2 class="card-title">Indicateurs récents</h2>
+          <p class="card-subtitle">Dernières mesures (7 jours)</p>
+          <div style="margin-left:auto;">
+            <button id="logoutBtn" class="btn-primary ghost" type="button">Déconnexion</button>
+          </div>
+        </div>
+
+        <div class="charts-container">
+          <div class="chart-card"><canvas id="weightChart"></canvas></div>
+          <div class="chart-card"><canvas id="stepsChart"></canvas></div>
+          <div class="chart-card"><canvas id="systolicChart"></canvas></div>
+          <div class="chart-card"><canvas id="diastolicChart"></canvas></div>
+          <div class="chart-card"><canvas id="heartRateChart"></canvas></div>
+          <div class="chart-card"><canvas id="sleepChart"></canvas></div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../database.js"></script>
+    <script src="../logout.js"></script>
+    <script src="../email_service.js"></script>
+    <script src="../reminders.js"></script>
+    <script src="../dashboard.js"></script>
+    <script src="../charts_widget.js"></script>
+  </body>
+</html>

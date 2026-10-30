@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthTrack — Créer un compte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+
+  <div class="bg"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="page-center">
+
+    <!-- Logo -->
+    <a href="login.html" class="logo-header">
+      <div class="logo-icon">🩺</div>
+      <span class="logo-name">HealthTrack</span>
+    </a>
+
+    <!-- Carte -->
+    <div class="card">
+      <h1 class="card-title">Créer un compte</h1>
+      <p class="card-subtitle">Rejoignez HealthTrack et prenez soin de votre santé.</p>
+
+      <!-- Sélecteur de rôle -->
+      <div class="role-selector">
+        <button class="role-btn active" id="btnPatient">👤 Patient</button>
+        <button class="role-btn"        id="btnMedecin">🩺 Médecin</button>
+      </div>
+
+      <!-- Alertes -->
+      <div class="alert error"   id="alertError"></div>
+      <div class="alert success" id="alertSuccess"></div>
+
+      <!-- Formulaire -->
+      <form id="registerForm" novalidate>
+
+        <!-- Champs communs (grille 2 col) -->
+        <div class="form-grid">
+
+          <div class="field" id="f-prenom">
+            <label for="prenom">👤 Prénom <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">👤</span>
+              <input type="text" id="prenom" placeholder="Ahmed"/>
+            </div>
+            <span class="hint">Le prénom est requis.</span>
+          </div>
+
+          <div class="field" id="f-nom">
+            <label for="nom">👥 Nom <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">👥</span>
+              <input type="text" id="nom" placeholder="Ben Ali"/>
+            </div>
+            <span class="hint">Le nom est requis.</span>
+          </div>
+
+          <div class="field full" id="f-email">
+            <label for="email">✉️ Email <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">✉️</span>
+              <input type="email" id="email" placeholder="votre@email.com"/>
+            </div>
+            <span class="hint">Entrez un email valide.</span>
+          </div>
+
+          <div class="field" id="f-telephone">
+            <label for="telephone">📞 Téléphone</label>
+            <div class="input-wrap">
+              <span class="ico">📞</span>
+              <input type="tel" id="telephone" placeholder="0612345678"/>
+            </div>
+            <span class="hint"></span>
+          </div>
+
+          <!-- Champ spécifique PATIENT : date de naissance -->
+          <div class="field patient-only" id="f-dateNaissance">
+            <label for="dateNaissance">🎂 Date de naissance <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">🎂</span>
+              <input type="date" id="dateNaissance"/>
+            </div>
+            <span class="hint">La date de naissance est requise.</span>
+          </div>
+
+          <!-- Champ spécifique MÉDECIN : spécialité -->
+          <div class="field medecin-only" id="f-specialite" style="display:none;">
+            <label for="specialite">🏥 Spécialité <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">🏥</span>
+              <select id="specialite">
+                <option value="">-- Choisir --</option>
+                <option value="Médecine générale">Médecine générale</option>
+                <option value="Cardiologie">Cardiologie</option>
+                <option value="Pédiatrie">Pédiatrie</option>
+                <option value="Dermatologie">Dermatologie</option>
+                <option value="Neurologie">Neurologie</option>
+                <option value="Gynécologie">Gynécologie</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+            <span class="hint">Veuillez choisir une spécialité.</span>
+          </div>
+
+          <div class="field full" id="f-password">
+            <label for="password">🔒 Mot de passe <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">🔒</span>
+              <input type="password" id="password" placeholder="Min. 6 caractères"/>
+            </div>
+            <!-- Barre de force -->
+            <div class="strength-bar" id="strengthBar">
+              <span id="s1"></span>
+              <span id="s2"></span>
+              <span id="s3"></span>
+              <span id="s4"></span>
+            </div>
+            <div class="strength-label" id="strengthLabel">Force du mot de passe</div>
+            <span class="hint">Minimum 6 caractères requis.</span>
+          </div>
+
+          <div class="field full" id="f-confirmPassword">
+            <label for="confirmPassword">🔑 Confirmer le mot de passe <span class="req">*</span></label>
+            <div class="input-wrap">
+              <span class="ico">🔑</span>
+              <input type="password" id="confirmPassword" placeholder="Répétez le mot de passe"/>
+            </div>
+            <span class="hint">Les mots de passe ne correspondent pas.</span>
+          </div>
+
+        </div><!-- /form-grid -->
+
+        <!-- CGU -->
+        <label style="display:flex; align-items:flex-start; gap:8px; font-size:13px; color:rgba(255,255,255,0.65); cursor:pointer; margin-bottom:4px; margin-top:4px;">
+          <input type="checkbox" id="cgu" style="accent-color:#2aad85; margin-top:2px; flex-shrink:0;"/>
+          J'accepte les <a href="#" style="color:#f0c44f; text-decoration:none; font-weight:500; margin-left:4px;">conditions d'utilisation</a>
+        </label>
+        <span id="cgu-hint" style="font-size:11px; color:#e74c3c; display:none; margin-bottom:8px;">Vous devez accepter les conditions.</span>
+
+        <!-- Bouton -->
+        <button type="submit" class="btn-primary" id="registerBtn">
+          Créer mon compte →
+        </button>
+
+      </form>
+
+      <!-- Lien connexion -->
+      <div class="nav-link" style="margin-top:18px;">
+        Déjà un compte ?
+        <a href="login.html">Se connecter</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../database.js"></script>
+  <script src="../register.js"></script>
+  <script src="../charts_widget.js"></script>
+
+</body>
+</html>

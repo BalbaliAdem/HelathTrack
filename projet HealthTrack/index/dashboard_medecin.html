@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthTrack — Espace Médecin</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="page-center">
+  <div class="container-fluid medecin-layout" style="padding: 20px; display: flex; gap: 20px; color: white;">
+
+    <div class="card medecin-left" style="flex: 0 0 360px; max-width: 360px;">
+      <h2 class="card-title">Mes Patients</h2>
+      <input id="patientSearch" class="search-input" placeholder="Rechercher un patient..." />
+      <div id="patientList" class="patient-list"></div>
+    </div>
+
+      <div class="card" style="flex: 1;" id="detailsPanel">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+        <div style="flex:1;">
+          <h2 class="card-title" id="patientName">Sélectionnez un patient</h2>
+          <p class="card-subtitle">Cliquez sur un patient à gauche pour voir son suivi.</p>
+        </div>
+        <div id="detailActions" style="display:none;">
+          <button id="clearPatientBtn" class="btn-primary" type="button">Effacer données</button>
+          <button id="logoutBtn" class="btn-primary ghost" type="button">Déconnexion</button>
+        </div>
+      </div>
+
+      <div id="statsSummary" style="display:none; margin-top:12px;">
+        <div class="stat-cards">
+          <div class="stat-card"><div class="stat-value" id="statWeight">—</div><div class="stat-label">Poids (moy)</div></div>
+          <div class="stat-card"><div class="stat-value" id="statSteps">—</div><div class="stat-label">Pas (moy)</div></div>
+          <div class="stat-card"><div class="stat-value" id="statHeart">—</div><div class="stat-label">FC (moy)</div></div>
+          <div class="stat-card"><div class="stat-value" id="statSleep">—</div><div class="stat-label">Sommeil (moy)</div></div>
+        </div>
+      </div>
+
+      <div id="recommendationPanel" style="display:none; margin-top:14px;">
+        <h3 class="card-subtitle">Envoyer une recommandation</h3>
+        <div class="field full">
+          <label>Sujet (optionnel)</label>
+          <input type="text" id="recSubject" placeholder="Ex: Conseils de suivi">
+        </div>
+        <div class="field full">
+          <label>Message</label>
+          <textarea id="recMessage" placeholder="Rédigez votre recommandation..." rows="4" style="width:100%; padding:11px 12px; border-radius:8px; background:var(--input-bg); border:1px solid var(--glass-border); color:var(--white);"></textarea>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center; margin-top:8px;">
+          <label style="display:flex; align-items:center; gap:8px;"><input type="checkbox" id="recEmail"> Email</label>
+          <button id="sendRecBtn" class="btn-primary" type="button">Envoyer</button>
+          <button id="templateRecBtn" class="btn-primary ghost" type="button">Modèle</button>
+        </div>
+      </div>
+
+      <div id="statsContainer" style="display: none; margin-top:14px;">
+        <div class="charts-grid">
+          <div class="chart-card"><canvas id="weightChart"></canvas></div>
+          <div class="chart-card"><canvas id="stepsChart"></canvas></div>
+          <div class="chart-card"><canvas id="systolicChart"></canvas></div>
+          <div class="chart-card"><canvas id="diastolicChart"></canvas></div>
+          <div class="chart-card"><canvas id="heartRateChart"></canvas></div>
+          <div class="chart-card"><canvas id="sleepChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../database.js"></script>
+  <script src="../logout.js"></script>
+  <script src="../email_service.js"></script>
+  <script src="../dashboard_medecin.js"></script>
+  <script src="../charts_widget.js"></script>
+</body>
+</html>
